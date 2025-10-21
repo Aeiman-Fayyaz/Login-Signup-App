@@ -5,23 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Signup App</title>
-    <!-- Our Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'body-bg': '#0D1B2A',
+                        'main-bg': '#778DA9',
+                        'text-color': '#E0E1DD',
+                        'shadow-color': '#415A77',
+                    }
+                }
+            }
+        }
+    </script>
 
 </head>
 
-<body>
-    <div>
-        <div>
-            <h3 id="welcome">Welcome , </h3>
+<body class="bg-[#0D1B2A] min-h-screen flex items-center justify-center p-4">
+    <div class="bg-main-bg rounded-2xl shadow-2xl p-8 w-full max-w-md" data-aos="fade-up" data-aos-duration="800">
+        <div class="text-center mb-8">
+            <h3 id="welcome" class="text-text-color text-2xl font-bold">Welcome, User</h3>
         </div>
-        <div><button id="logout">Logout</button></div>
+
+        <div class="flex justify-center">
+            <button id="logout"
+                class="bg-body-bg text-text-color px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-shadow-color focus:ring-opacity-50">
+                Logout
+            </button>
+        </div>
     </div>
 
-
-
-
-    <script type="module" src="./app.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+    </script>
 </body>
 
 </html>
