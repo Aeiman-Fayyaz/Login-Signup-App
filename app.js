@@ -6,8 +6,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup, signOut
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC3iTyouxoUiqWWH9Corp-_00ZZzvaqXu0",
@@ -111,9 +114,9 @@ document.getElementById("google-btn")?.addEventListener("click", () => {
 });
 
 // Firebase Method - Signout
-document.getElementById("logout-btn")?.addEventListener("click" , () => {
+document.getElementById("logout-btn")?.addEventListener("click", () => {
   signOut(auth)
-  .then(() => {
+    .then(() => {
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -133,4 +136,15 @@ document.getElementById("logout-btn")?.addEventListener("click" , () => {
         timer: 1500,
       });
     });
-}) 
+});
+
+// Show Email on Welcome page
+// Firebase Method
+
+onAuthStateChanged(auth, (user) => {
+  if (user && window.location.pathname.includes("welcome.html")) {
+    document.getElementById("userEmail").textContent = user.email;
+  } else if (!user && window.location.pathname.includes("welcome.html")) {
+    window.location.href = "index.html";
+  }
+});
